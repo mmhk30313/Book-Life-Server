@@ -100,7 +100,6 @@ client.connect(err => {
       // console.log(data, " => users data");
         data.quantity += userBookData.quantity;
         // console.log(data);
-        // console.log(data, " => user data");
         userBookCollection.updateOne({_id: ObjectId(id)},{
           $set: { quantity: data.quantity }
         })
