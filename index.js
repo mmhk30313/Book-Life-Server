@@ -47,9 +47,12 @@ client.connect(err => {
       })
       .catch(err=> console.log(err))
   })
+
   app.get('/allBooks', (req, res) =>{
       // console.log(204)
-      bookCollection.find({})
+      const search = req.query.search;
+      // console.log(search," => ");
+      bookCollection.find({bookName: {$regex: search}})
       .toArray((err, documents) => {
           // console.log(documents);
           res.send(documents);
